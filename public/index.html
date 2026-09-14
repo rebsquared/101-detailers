@@ -2,25 +2,39 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>101 Detailers | Premium Mobile Auto Detailing</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#08111c" />
   <meta name="description" content="Premium mobile auto detailing that comes to you. Request a quote from 101 Detailers." />
+  <title>101 Detailers | Premium Mobile Auto Care</title>
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="icon" href="/assets/icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="/assets/icons/icon-192.png" />
   <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
   <header class="hero">
-    <nav class="nav">
-      <div class="brand">101 Detailers</div>
-      <a class="nav-cta" href="#quote">Get a Quote</a>
-    </nav>
-    <div class="hero-inner">
-      <p class="eyebrow">Mobile detailing • We come to you</p>
-      <h1>Premium detailing, delivered to your driveway.</h1>
-      <p class="subhead">Fifteen years of hands-on experience, professional results, and straightforward service built around your vehicle and your schedule.</p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="#quote">Request a Quote</a>
-        <a class="btn btn-secondary" href="#services">See Services</a>
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="#top" aria-label="101 Detailers home">
+        <img src="/assets/101-detailers-shield.png" alt="" width="64" height="64" />
+        <span>101 Detailers</span>
+      </a>
+      <div class="nav-actions">
+        <button class="install-button" id="install-app" type="button" hidden>Install App</button>
+        <a class="nav-cta" href="#quote">Get a Quote</a>
       </div>
+    </nav>
+
+    <div class="hero-inner" id="top">
+      <div class="hero-copy">
+        <p class="eyebrow">Mobile detailing • We come to you</p>
+        <h1>Premium auto care, delivered.</h1>
+        <p class="subhead">Fifteen years of hands-on experience, professional results, and straightforward service built around your vehicle and your schedule.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#quote">Request a Quote</a>
+          <a class="btn btn-secondary" href="#services">See Services</a>
+        </div>
+      </div>
+      <img class="hero-art" src="/assets/101-detailers-hero.jpeg" alt="US 101 Detailers — Premium Auto Care" width="1408" height="768" />
     </div>
   </header>
 
@@ -39,7 +53,7 @@
       <article class="card"><h3>Complete Detail</h3><p>A full inside-and-out reset for vehicles that need comprehensive care and a noticeably refreshed look.</p></article>
     </section>
 
-    <section class="section proof">
+    <section class="section proof" aria-label="Why choose 101 Detailers">
       <div class="proof-block"><span>15+</span><p>years detailing</p></div>
       <div class="proof-block"><span>Mobile</span><p>service at your location</p></div>
       <div class="proof-block"><span>Direct</span><p>communication with your detailer</p></div>
@@ -47,26 +61,48 @@
 
     <section class="section quote" id="quote">
       <div class="quote-copy">
+        <img class="quote-mark" src="/assets/101-detailers-shield.png" alt="101 Detailers shield" width="180" height="180" loading="lazy" />
         <p class="eyebrow">Start a conversation</p>
         <h2>Tell us what you drive and what you need.</h2>
         <p>Send the basics and we’ll follow up directly to confirm the service, location, timing, and quote.</p>
       </div>
       <form class="lead-form" action="mailto:hello@101detailers.com" method="post" enctype="text/plain">
-        <label>Name<input name="name" required /></label>
-        <label>Mobile number<input name="phone" type="tel" required /></label>
+        <label>Name<input name="name" autocomplete="name" required /></label>
+        <label>Mobile number<input name="phone" type="tel" autocomplete="tel" required /></label>
         <label>Vehicle<input name="vehicle" placeholder="Year, make, model" required /></label>
         <label>Service needed<select name="service"><option>Complete detail</option><option>Exterior detail</option><option>Interior detail</option><option>Not sure yet</option></select></label>
-        <label>ZIP / service location<input name="location" required /></label>
+        <label>ZIP / service location<input name="location" autocomplete="postal-code" required /></label>
         <label>Preferred date<input name="date" type="date" /></label>
         <button class="btn btn-primary" type="submit">Request My Quote</button>
-        <p class="fineprint">This is the initial preview flow. We’ll replace email submission with a proper lead system before launch.</p>
+        <p class="fineprint">This preview opens your email app to send the request. A dedicated lead system will replace it before launch.</p>
       </form>
     </section>
   </main>
 
   <footer>
-    <div class="brand">101 Detailers</div>
-    <p>Premium mobile auto detailing.</p>
+    <a class="brand" href="#top"><img src="/assets/101-detailers-shield.png" alt="" width="52" height="52" /><span>101 Detailers</span></a>
+    <p>Premium mobile auto care.</p>
   </footer>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => navigator.serviceWorker.register('/service-worker.js'));
+    }
+
+    let installPrompt;
+    const installButton = document.querySelector('#install-app');
+    window.addEventListener('beforeinstallprompt', (event) => {
+      event.preventDefault();
+      installPrompt = event;
+      installButton.hidden = false;
+    });
+    installButton.addEventListener('click', async () => {
+      if (!installPrompt) return;
+      await installPrompt.prompt();
+      installPrompt = undefined;
+      installButton.hidden = true;
+    });
+    window.addEventListener('appinstalled', () => { installButton.hidden = true; });
+  </script>
 </body>
 </html>
