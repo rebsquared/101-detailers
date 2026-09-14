@@ -3,8 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#08111c" />
-  <meta name="description" content="Premium mobile auto detailing that comes to you. Request a quote from 101 Detailers." />
+  <meta name="theme-color" content="#07121e" />
+  <meta name="description" content="101 Detailers brings premium mobile auto care to you. Call 541-992-1237 or request a detailing quote." />
+  <meta name="format-detection" content="telephone=yes" />
   <title>101 Detailers | Premium Mobile Auto Care</title>
   <link rel="manifest" href="/manifest.webmanifest" />
   <link rel="icon" href="/assets/icons/icon-192.png" />
@@ -12,104 +13,49 @@
   <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
-  <header class="hero">
+  <div class="utility-bar"><span>Premium mobile auto care</span><a href="tel:+15419921237">Call 541-992-1237</a></div>
+  <header class="site-header" id="top">
     <nav class="nav" aria-label="Primary navigation">
-      <a class="brand" href="#top" aria-label="101 Detailers home">
-        <img src="/assets/101-detailers-shield.png" alt="" width="64" height="64" />
-        <span>101 Detailers</span>
-      </a>
-      <div class="nav-actions">
-        <button class="install-button" id="install-app" type="button" hidden>Install App</button>
-        <a class="call-link call-link-nav" href="tel:+15419921237" aria-label="Call 101 Detailers at 541-992-1237">Call Now</a>
-        <a class="nav-cta" href="#quote">Get a Quote</a>
-      </div>
+      <a class="brand" href="#top" aria-label="101 Detailers home"><img src="/assets/101-detailers-shield.png" alt="" width="64" height="64" /><span>101 Detailers</span></a>
+      <div class="desktop-links"><a href="#services">Services</a><a href="#why-101">Why 101</a><a href="#process">How it works</a><a href="#reviews">Reviews</a><a href="#quote">Quote</a></div>
+      <div class="nav-actions"><button class="install-button" id="install-app" type="button" hidden>Install App</button><a class="call-button compact" href="tel:+15419921237">Call Now</a></div>
     </nav>
-
-    <div class="hero-inner" id="top">
-      <div class="hero-copy">
-        <p class="eyebrow">Mobile detailing • We come to you</p>
-        <h1>Premium auto care, delivered.</h1>
-        <p class="subhead">Fifteen years of hands-on experience, professional results, and straightforward service built around your vehicle and your schedule.</p>
-        <div class="hero-actions">
-          <a class="btn btn-primary btn-call" href="tel:+15419921237" aria-label="Call 101 Detailers at 541-992-1237">Call 541-992-1237</a>
-          <a class="btn btn-secondary" href="#quote">Request a Quote</a>
-          <a class="btn btn-secondary" href="#services">See Services</a>
-        </div>
-      </div>
-      <img class="hero-art" src="/assets/101-detailers-hero.jpeg" alt="US 101 Detailers — Premium Auto Care" width="1408" height="768" />
-    </div>
   </header>
 
   <main>
-    <section class="section intro">
-      <div>
-        <p class="eyebrow">Detailing excellence, without the shop visit</p>
-        <h2>Your car gets the attention. You keep your day.</h2>
-      </div>
-      <p>101 Detailers is built for customers who care about the finish and value their time. We bring the tools, experience, and process to your location for a clean, high-quality result without the hassle of dropping your vehicle off.</p>
+    <section class="hero" aria-labelledby="hero-title">
+      <img class="hero-art" src="/assets/101-detailers-hero.jpeg" alt="US 101 Detailers — Premium Auto Care" width="1408" height="768" />
+      <div class="hero-shade"></div>
+      <div class="hero-content"><p class="eyebrow">Professional mobile detailing</p><h1 id="hero-title">Your vehicle.<br />Our full attention.</h1><p>Premium detailing brought to your location, backed by more than fifteen years of hands-on experience.</p><div class="hero-actions"><a class="call-button" href="tel:+15419921237"><span>Call for service</span><strong>541-992-1237</strong></a><a class="outline-button" href="#quote">Request a Quote</a></div></div>
+    </section>
+    <section class="promise" aria-label="101 Detailers values"><p>Experience</p><span></span><p>Precision</p><span></span><p>Convenience</p></section>
+
+    <section class="section section-heading" id="services"><div><p class="eyebrow">Choose your detail</p><h2>Focused care for every part of your vehicle.</h2></div><p>Start with the service that best matches your vehicle. We’ll confirm its condition, location, timing, and exact quote with you directly.</p></section>
+    <section class="service-grid section-tight">
+      <article class="service-card"><p class="service-number">01</p><h3>Exterior Detail</h3><p>Deep wash, wheels, trim, glass, decontamination, and finishing work designed to restore a clean, polished presentation.</p><a href="tel:+15419921237">Call for an exterior quote <span>→</span></a></article>
+      <article class="service-card featured"><p class="service-number">02</p><p class="tag">Complete care</p><h3>Complete Detail</h3><p>A thorough inside-and-out reset for vehicles that need comprehensive attention and a noticeably refreshed finish.</p><a href="tel:+15419921237">Call for a complete-detail quote <span>→</span></a></article>
+      <article class="service-card"><p class="service-number">03</p><h3>Interior Detail</h3><p>Focused cleaning of surfaces, carpets, upholstery, glass, and high-touch areas with careful attention to material and finish.</p><a href="tel:+15419921237">Call for an interior quote <span>→</span></a></article>
     </section>
 
-    <section class="section cards" id="services">
-      <article class="card"><h3>Exterior Detail</h3><p>Deep wash, decontamination, wheels, trim, glass, and finishing work designed to restore gloss and presentation.</p></article>
-      <article class="card"><h3>Interior Detail</h3><p>Focused cleaning of surfaces, carpets, upholstery, glass, and high-touch areas with careful attention to finish.</p></article>
-      <article class="card"><h3>Complete Detail</h3><p>A full inside-and-out reset for vehicles that need comprehensive care and a noticeably refreshed look.</p></article>
-    </section>
+    <section class="experience" id="why-101"><div class="experience-mark"><img src="/assets/101-detailers-shield.png" alt="101 Detailers shield" width="520" height="520" loading="lazy" /></div><div class="experience-copy"><p class="eyebrow">Why 101 Detailers</p><h2>Professional results without losing your day.</h2><p>We bring the detailing process to your location. You get direct communication, careful work, and a service plan shaped around the vehicle in front of us.</p><dl class="stats"><div><dt>15+</dt><dd>Years detailing</dd></div><div><dt>Mobile</dt><dd>Service at your location</dd></div><div><dt>Direct</dt><dd>Contact with your detailer</dd></div></dl></div></section>
 
-    <section class="section proof" aria-label="Why choose 101 Detailers">
-      <div class="proof-block"><span>15+</span><p>years detailing</p></div>
-      <div class="proof-block"><span>Mobile</span><p>service at your location</p></div>
-      <div class="proof-block"><span>Direct</span><p>communication with your detailer</p></div>
-    </section>
+    <section class="section process" id="process"><div class="section-heading compact-heading"><div><p class="eyebrow">Simple from the start</p><h2>Three steps to a cleaner vehicle.</h2></div></div><ol><li><span>1</span><div><h3>Tell us what you drive</h3><p>Call or send the year, make, model, condition, and service you’re considering.</p></div></li><li><span>2</span><div><h3>Confirm the details</h3><p>We’ll confirm the service, location, timing, and quote directly with you.</p></div></li><li><span>3</span><div><h3>We come to you</h3><p>Your detailer arrives prepared to give your vehicle focused, professional care.</p></div></li></ol></section>
 
-    <section class="section quote" id="quote">
-      <div class="quote-copy">
-        <img class="quote-mark" src="/assets/101-detailers-shield.png" alt="101 Detailers shield" width="180" height="180" loading="lazy" />
-        <p class="eyebrow">Start a conversation</p>
-        <h2>Tell us what you drive and what you need.</h2>
-        <p>Send the basics and we’ll follow up directly to confirm the service, location, timing, and quote.</p>
-      </div>
-      <form class="lead-form" action="mailto:hello@101detailers.com" method="post" enctype="text/plain">
-        <label>Name<input name="name" autocomplete="name" required /></label>
-        <label>Mobile number<input name="phone" type="tel" autocomplete="tel" required /></label>
-        <label>Vehicle<input name="vehicle" placeholder="Year, make, model" required /></label>
-        <label>Service needed<select name="service"><option>Complete detail</option><option>Exterior detail</option><option>Interior detail</option><option>Not sure yet</option></select></label>
-        <label>ZIP / service location<input name="location" autocomplete="postal-code" required /></label>
-        <label>Preferred date<input name="date" type="date" /></label>
-        <button class="btn btn-primary" type="submit">Request My Quote</button>
-        <p class="fineprint">This preview opens your email app to send the request. A dedicated lead system will replace it before launch.</p>
-      </form>
-    </section>
+    <section class="reviews-shell section-tight" id="reviews" aria-labelledby="reviews-title"><div><p class="eyebrow">Customer reviews</p><h2 id="reviews-title">Real feedback is coming here.</h2><p>This section is reserved for selected, verified reviews from the official 101 Detailers Google Maps profile. No placeholder testimonial is presented as a customer statement.</p></div><a class="outline-button" href="tel:+15419921237">Call 101 Detailers</a></section>
+
+    <section class="app-panel section-tight" aria-labelledby="app-title"><img src="/assets/101-detailers-shield.png" alt="" width="190" height="190" loading="lazy" /><div><p class="eyebrow">101 Detailers on your phone</p><h2 id="app-title">Keep us one tap away.</h2><p>Install the 101 Detailers web app for fast access to services, quote requests, reviews, and the main call button.</p></div><button class="outline-button install-cta" id="install-app-secondary" type="button" hidden>Install 101 Detailers</button></section>
+
+    <section class="quote-section" id="quote"><div class="quote-copy"><p class="eyebrow">Request your quote</p><h2>Tell us about your vehicle.</h2><p>Prefer to talk now? Call the main 101 Detailers number.</p><a class="phone-display" href="tel:+15419921237">541-992-1237</a></div><form class="lead-form" action="mailto:hello@101detailers.com" method="post" enctype="text/plain"><label>Name<input name="name" autocomplete="name" required /></label><label>Mobile number<input name="phone" type="tel" autocomplete="tel" required /></label><label>Vehicle<input name="vehicle" placeholder="Year, make, model" required /></label><label>Service<select name="service"><option>Complete detail</option><option>Exterior detail</option><option>Interior detail</option><option>Not sure yet</option></select></label><label>ZIP / service location<input name="location" autocomplete="postal-code" required /></label><label>Preferred date<input name="date" type="date" /></label><button class="submit-button" type="submit">Request My Quote</button><p class="fineprint">This preview opens your email app. A dedicated lead system will replace it before launch.</p></form></section>
   </main>
 
-  <footer>
-    <a class="brand" href="#top"><img src="/assets/101-detailers-shield.png" alt="" width="52" height="52" /><span>101 Detailers</span></a>
-    <p>Premium mobile auto care. <a class="footer-call" href="tel:+15419921237">541-992-1237</a></p>
-  </footer>
-
-  <a class="mobile-call" href="tel:+15419921237" aria-label="Call 101 Detailers at 541-992-1237">
-    <span>Call 101 Detailers</span>
-    <strong>541-992-1237</strong>
-  </a>
-
+  <footer><a class="brand" href="#top"><img src="/assets/101-detailers-shield.png" alt="" width="56" height="56" /><span>101 Detailers</span></a><p>Premium mobile auto care.</p><a class="footer-call" href="tel:+15419921237">541-992-1237</a></footer>
+  <a class="mobile-call" href="tel:+15419921237" aria-label="Call 101 Detailers at 541-992-1237"><span>Call 101 Detailers</span><strong>541-992-1237</strong></a>
   <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => navigator.serviceWorker.register('/service-worker.js'));
-    }
-
-    let installPrompt;
-    const installButton = document.querySelector('#install-app');
-    window.addEventListener('beforeinstallprompt', (event) => {
-      event.preventDefault();
-      installPrompt = event;
-      installButton.hidden = false;
-    });
-    installButton.addEventListener('click', async () => {
-      if (!installPrompt) return;
-      await installPrompt.prompt();
-      installPrompt = undefined;
-      installButton.hidden = true;
-    });
-    window.addEventListener('appinstalled', () => { installButton.hidden = true; });
+    if ('serviceWorker' in navigator) window.addEventListener('load', () => navigator.serviceWorker.register('/service-worker.js'));
+    let installPrompt; const installButtons = [...document.querySelectorAll('#install-app, #install-app-secondary')];
+    window.addEventListener('beforeinstallprompt', (event) => { event.preventDefault(); installPrompt = event; installButtons.forEach((button) => { button.hidden = false; }); });
+    installButtons.forEach((button) => button.addEventListener('click', async () => { if (!installPrompt) return; await installPrompt.prompt(); installPrompt = undefined; installButtons.forEach((item) => { item.hidden = true; }); }));
+    window.addEventListener('appinstalled', () => installButtons.forEach((button) => { button.hidden = true; }));
   </script>
 </body>
 </html>
