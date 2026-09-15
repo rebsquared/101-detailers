@@ -3,10 +3,10 @@
   "name": "101 Detailers",
   "short_name": "101 Detailers",
   "description": "Premium mobile auto care, one-tap calling, and quote requests.",
-  "start_url": "/",
+  "start_url": "/app.html?source=pwa",
   "scope": "/",
   "display": "standalone",
-  "orientation": "any",
+  "orientation": "portrait-primary",
   "background_color": "#060b11",
   "theme_color": "#08111c",
   "shortcuts": [
@@ -16,6 +16,12 @@
       "description": "Start a 101 Detailers quote request.",
       "url": "/#quote",
       "icons": [{ "src": "/assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Call 101 Detailers",
+      "short_name": "Call",
+      "description": "Call 101 Detailers.",
+      "url": "tel:+15419921237"
     }
   ],
   "icons": [
