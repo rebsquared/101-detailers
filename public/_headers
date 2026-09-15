@@ -1,0 +1,11 @@
+/
+  Cache-Control: no-cache, no-store, must-revalidate
+
+/service-worker.js
+  Cache-Control: no-cache, no-store, must-revalidate
+
+/styles.css
+  Cache-Control: no-cache, must-revalidate
+
+/assets/101-detailers-hero-video.mp4
+  Cache-Control: public, max-age=3600

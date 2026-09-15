@@ -24,7 +24,7 @@
     <link rel="manifest" href="/manifest.webmanifest" />
     <link rel="icon" href="/assets/icons/icon-192.png" />
     <link rel="apple-touch-icon" href="/assets/icons/icon-192.png" />
-    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/styles.css?v=9" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -79,7 +79,7 @@
           poster="/assets/101-detailers-hero-poster.jpg"
           aria-hidden="true"
         >
-          <source src="/assets/101-detailers-hero-video.mp4?v=2" type="video/mp4" />
+          <source src="/assets/101-detailers-hero-video.mp4?v=3" type="video/mp4" />
         </video>
         <div class="hero-shade"></div>
         <div class="hero-content">
@@ -344,7 +344,7 @@
     <script>
       if ("serviceWorker" in navigator)
         window.addEventListener("load", () =>
-          navigator.serviceWorker.register("/service-worker.js?v=8"),
+          navigator.serviceWorker.register("/service-worker.js?v=9", { updateViaCache: "none" }).then((registration) => registration.update()),
         );
       const heroVideo = document.querySelector(".hero video");
       if (

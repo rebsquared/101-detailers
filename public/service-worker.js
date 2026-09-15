@@ -1,4 +1,4 @@
-const CACHE = "101-detailers-brand-v8";
+const CACHE = "101-detailers-brand-v9";
 const APP_SHELL = [
   "/",
   "/styles.css",
@@ -30,8 +30,12 @@ self.addEventListener("activate", (event) => {
 self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET") return;
   if (event.request.headers.has("range")) return;
+  const networkRequest =
+    event.request.mode === "navigate"
+      ? new Request(event.request, { cache: "no-store" })
+      : event.request;
   event.respondWith(
-    fetch(event.request)
+    fetch(networkRequest)
       .then((response) => {
         const copy = response.clone();
         caches.open(CACHE).then((cache) => cache.put(event.request, copy));
