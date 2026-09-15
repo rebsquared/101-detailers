@@ -344,7 +344,7 @@
     <script>
       if ("serviceWorker" in navigator)
         window.addEventListener("load", () =>
-          navigator.serviceWorker.register("/service-worker.js?v=9", { updateViaCache: "none" }).then((registration) => registration.update()),
+          navigator.serviceWorker.register("/service-worker.js?v=13", { updateViaCache: "none" }).then((registration) => registration.update()),
         );
       const heroVideo = document.querySelector(".hero video");
       if (
