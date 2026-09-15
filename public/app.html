@@ -15,27 +15,28 @@
     *{box-sizing:border-box}
     html,body{margin:0;min-height:100%;background:var(--ink);color:var(--white);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
     body{min-height:100svh;display:grid;place-items:center;padding:max(24px,env(safe-area-inset-top)) 20px max(24px,env(safe-area-inset-bottom))}
-    .app{width:min(100%,460px);min-height:min(760px,92svh);display:flex;flex-direction:column;justify-content:space-between;padding:28px;border:1px solid rgba(255,255,255,.12);border-radius:32px;background:radial-gradient(circle at 50% 8%,rgba(106,167,220,.18),transparent 34%),linear-gradient(155deg,#0d1b28,#07121e 68%,#050a10);box-shadow:0 24px 80px rgba(0,0,0,.45);overflow:hidden}
+    .app{width:min(100%,460px);min-height:min(760px,92svh);display:flex;flex-direction:column;justify-content:space-between;padding:28px;border:1px solid rgba(255,215,122,.18);border-radius:32px;background:radial-gradient(circle at 50% 8%,rgba(244,173,39,.13),transparent 30%),radial-gradient(circle at 50% 6%,rgba(106,167,220,.12),transparent 40%),linear-gradient(155deg,#0d1b28,#07121e 68%,#050a10);box-shadow:0 24px 80px rgba(0,0,0,.45);overflow:hidden}
     .brand{text-align:center}
-    .brand img{width:110px;height:110px;object-fit:contain;filter:drop-shadow(0 0 26px rgba(106,167,220,.28))}
-    .kicker{margin:14px 0 8px;color:#bdd1e2;font-size:.72rem;font-weight:900;letter-spacing:.18em;text-transform:uppercase}
+    .logo-wrap{width:124px;height:124px;margin:0 auto;display:grid;place-items:center;border:1px solid rgba(255,215,122,.28);border-radius:30px;background:linear-gradient(145deg,rgba(255,215,122,.08),rgba(244,173,39,.02));box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 18px 50px rgba(0,0,0,.25)}
+    .brand img{width:105px;height:105px;object-fit:contain;filter:drop-shadow(0 0 18px rgba(244,173,39,.26))}
+    .kicker{margin:16px 0 8px;color:var(--amber2);font-size:.72rem;font-weight:900;letter-spacing:.18em;text-transform:uppercase}
     h1{margin:0;font-size:clamp(2.45rem,11vw,4rem);line-height:.94;letter-spacing:-.055em}
     .lead{margin:18px auto 0;max-width:30ch;color:#c3cfda;font-size:1.04rem;line-height:1.6;text-align:center}
     .question{margin:34px 0 14px;font-size:1.16rem;font-weight:900;text-align:center}
     .actions{display:grid;gap:12px}
     .btn{min-height:58px;display:flex;align-items:center;justify-content:center;border-radius:18px;text-decoration:none;font-weight:900;letter-spacing:.01em;border:1px solid #536e85}
-    .btn.primary{border-color:var(--amber2);background:linear-gradient(180deg,#ffd77a 0%,#f4ad27 48%,#d89012 100%);color:#07121e;box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 12px 34px rgba(244,173,39,.24)}
+    .btn.primary{border-color:var(--amber2);background:linear-gradient(180deg,#ffe59f 0%,#ffd77a 23%,#f4ad27 56%,#d89012 100%);color:#07121e;box-shadow:inset 0 1px 0 rgba(255,255,255,.72),inset 0 -2px 0 rgba(100,55,0,.18),0 12px 34px rgba(244,173,39,.28)}
     .btn.secondary{background:rgba(255,255,255,.035);color:#fff}
     .quick{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
     .quick a{min-height:50px;display:flex;align-items:center;justify-content:center;border:1px solid #425c72;border-radius:15px;color:#dce8f1;text-decoration:none;font-weight:800;background:rgba(7,18,30,.72)}
     .footer{margin-top:24px;text-align:center;color:#8297a8;font-size:.75rem}
-    @media(max-width:380px){.app{padding:22px;border-radius:26px}.brand img{width:92px;height:92px}.quick{grid-template-columns:1fr}}
+    @media(max-width:380px){.app{padding:22px;border-radius:26px}.logo-wrap{width:108px;height:108px}.brand img{width:92px;height:92px}.quick{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
   <main class="app">
     <section class="brand">
-      <img src="/assets/101-detailers-shield-v2.png" alt="101 Detailers" />
+      <div class="logo-wrap"><img src="/assets/101-detailers-shield-v2.png" alt="101 Detailers" /></div>
       <p class="kicker">Premium mobile auto care</p>
       <h1>Your detailer,<br />one tap away.</h1>
       <p class="lead">Keep 101 Detailers on your phone for fast quotes, calls, texts, and mobile service.</p>
@@ -57,7 +58,7 @@
   </main>
   <script>
     if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => navigator.serviceWorker.register('/service-worker.js?v=11', { updateViaCache: 'none' }));
+      window.addEventListener('load', () => navigator.serviceWorker.register('/service-worker.js?v=12', { updateViaCache: 'none' }));
     }
   </script>
 </body>
