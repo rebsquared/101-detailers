@@ -1,7 +1,8 @@
-const CACHE = "101-detailers-brand-v9";
+const CACHE = "101-detailers-brand-v10";
 const APP_SHELL = [
   "/",
   "/styles.css",
+  "/reviews.html",
   "/manifest.webmanifest",
   "/assets/101-detailers-hero-poster.jpg",
   "/assets/101-detailers-shield-v2.png",
@@ -27,19 +28,38 @@ self.addEventListener("activate", (event) => {
   );
 });
 
+const injectReviews = async (response) => {
+  if (!response.ok) return response;
+  const html = await response.text();
+  const reviewsResponse = await fetch("/reviews.html", { cache: "no-store" });
+  if (!reviewsResponse.ok) return new Response(html, response);
+  const reviews = await reviewsResponse.text();
+  const pattern = /<section\s+class="reviews-shell section-tight"[\s\S]*?<\/section>/;
+  if (!pattern.test(html)) return new Response(html, response);
+  const updated = html.replace(pattern, reviews);
+  const headers = new Headers(response.headers);
+  headers.delete("content-length");
+  return new Response(updated, { status: response.status, statusText: response.statusText, headers });
+};
+
 self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET") return;
   if (event.request.headers.has("range")) return;
+  const isHomeNavigation =
+    event.request.mode === "navigate" &&
+    new URL(event.request.url).origin === self.location.origin &&
+    new URL(event.request.url).pathname === "/";
   const networkRequest =
     event.request.mode === "navigate"
       ? new Request(event.request, { cache: "no-store" })
       : event.request;
   event.respondWith(
     fetch(networkRequest)
-      .then((response) => {
-        const copy = response.clone();
+      .then(async (response) => {
+        const rendered = isHomeNavigation ? await injectReviews(response) : response;
+        const copy = rendered.clone();
         caches.open(CACHE).then((cache) => cache.put(event.request, copy));
-        return response;
+        return rendered;
       })
       .catch(() =>
         caches
