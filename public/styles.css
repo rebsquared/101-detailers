@@ -101,8 +101,9 @@ a, button, input, select { -webkit-tap-highlight-color: transparent; }
 }
 .hero-actions .call-button span { font-size: .84rem; text-transform: uppercase; letter-spacing: .1em; }
 .hero-actions .call-button strong { font-size: 1.2rem; }
-.promise { max-width: 1240px; margin: 0 auto; padding: 30px 24px 20px; display: flex; align-items: center; justify-content: center; gap: 32px; color: #d9e3eb; font-size: .82rem; font-weight: 850; letter-spacing: .18em; text-transform: uppercase; }
-.promise span { width: 5px; height: 5px; border-radius: 50%; background: var(--glow); box-shadow: 0 0 12px var(--glow); }
+.promise { max-width: 1240px; margin: 0 auto; padding: 30px 24px 20px; display: flex; align-items: center; justify-content: center; gap: 26px; color: #f6fbff; font-family: "Space Grotesk", "Avenir Next", Inter, ui-sans-serif, system-ui, sans-serif; font-size: clamp(1rem, 1.5vw, 1.2rem); font-weight: 750; letter-spacing: .12em; text-transform: uppercase; }
+.promise p { margin: 0; }
+.promise span { width: 6px; height: 6px; border-radius: 50%; background: var(--amber); box-shadow: 0 0 14px rgba(244,173,39,.65); }
 .section, .section-tight { max-width: 1240px; margin: 0 auto; padding: 110px 24px; }
 .section-tight { padding-top: 0; }
 .section-heading { display: grid; grid-template-columns: 1.1fr .9fr; align-items: end; gap: 80px; }
@@ -210,7 +211,7 @@ footer > p { margin: 0; font-size: 1.02rem; }
   .hero h1 { max-width: 12ch; font-size: clamp(3.45rem, 15vw, 5.2rem); }
   .hero-actions { display: grid; }
   .hero-actions > a { width: 100%; }
-  .promise { gap: 11px; padding-inline: 14px; font-size: .7rem; letter-spacing: .1em; }
+  .promise { gap: 10px; padding-inline: 14px; font-size: .9rem; letter-spacing: .055em; }
   .section, .section-tight { padding-left: 18px; padding-right: 18px; }
   .section { padding-top: 78px; padding-bottom: 78px; }
   .service-card { min-height: 260px; padding: 27px; }
@@ -247,7 +248,7 @@ footer > p { margin: 0; font-size: 1.02rem; }
   footer .brand span { display: inline; }
   .call-button.compact { min-height: 40px; }
   .hero-content { padding-top: 38vh; }
-  .promise p { font-size: .57rem; }
+  .promise p { font-size: .8rem; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
