@@ -12,11 +12,32 @@
       content="101 Detailers brings premium mobile auto care to you. Call 541-992-1237 or request a detailing quote."
     />
     <meta name="format-detection" content="telephone=yes" />
+    <link rel="canonical" href="https://101detailers.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="101 Detailers" />
+    <meta property="og:title" content="101 Detailers | Premium Mobile Auto Care" />
+    <meta property="og:description" content="Professional mobile detailing brought to your location. Call, text, or request a quote online." />
+    <meta property="og:url" content="https://101detailers.com/" />
+    <meta property="og:image" content="https://101detailers.com/assets/101-detailers-hero-poster.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
     <title>101 Detailers | Premium Mobile Auto Care</title>
     <link rel="manifest" href="/manifest.webmanifest" />
     <link rel="icon" href="/assets/icons/icon-192.png" />
     <link rel="apple-touch-icon" href="/assets/icons/icon-192.png" />
     <link rel="stylesheet" href="/styles.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "AutomotiveBusiness",
+        "name": "101 Detailers",
+        "url": "https://101detailers.com/",
+        "logo": "https://101detailers.com/assets/101-detailers-shield-v2.png",
+        "image": "https://101detailers.com/assets/101-detailers-hero-poster.jpg",
+        "telephone": "+1-541-992-1237",
+        "email": "info@101detailers.com",
+        "description": "Premium mobile auto detailing brought to the customer's location."
+      }
+    </script>
   </head>
   <body>
     <div class="utility-bar">
@@ -230,7 +251,9 @@
           <p class="eyebrow">Request your quote</p>
           <h2>Tell us about your vehicle.</h2>
           <p>Prefer to talk now? Call the main 101 Detailers number.</p>
-          <a class="phone-display" href="tel:+15419921237">541-992-1237</a><a class="text-display" href="sms:+15419921237">Text for a faster reply</a><a class="email-display" href="mailto:info@101detailers.com">info@101detailers.com</a>
+          <a class="phone-display" href="tel:+15419921237">541-992-1237</a>
+          <a class="text-display" href="sms:+15419921237">Text for a faster reply</a>
+          <a class="email-display" href="mailto:info@101detailers.com">info@101detailers.com</a>
         </div>
         <form
           class="lead-form"
@@ -263,7 +286,7 @@
               autocomplete="postal-code"
               required /></label
           ><label>Preferred date<input name="date" type="date" /></label
-          ><label class="form-trap" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off" /></label><input id="quote-loaded-at" name="submitted_at" type="hidden" /><button class="submit-button" type="submit">Request My Quote</button>
+          ><label class="form-trap" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off" /></label><input id="quote-loaded-at" name="submitted_at" type="hidden" /><input name="utm_source" type="hidden" /><input name="utm_medium" type="hidden" /><input name="utm_campaign" type="hidden" /><button class="submit-button" type="submit">Request My Quote</button>
           <p class="form-status" id="quote-status" role="status" aria-live="polite"></p>
           <p class="fineprint">
             We’ll contact you to confirm pricing, availability, and your appointment.
@@ -308,11 +331,15 @@
         /><span>101 Detailers</span></a
       >
       <p>Premium mobile auto care.</p>
-      <div class="footer-actions"><a class="footer-call" href="tel:+15419921237">Call 541-992-1237</a><a class="footer-text" href="sms:+15419921237">Text us</a><a class="footer-email" href="mailto:info@101detailers.com">info@101detailers.com</a></div>
+      <div class="footer-actions">
+        <a class="footer-call" href="tel:+15419921237">Call 541-992-1237</a>
+        <a class="footer-text" href="sms:+15419921237">Text us</a>
+        <a class="footer-email" href="mailto:info@101detailers.com">info@101detailers.com</a>
+      </div>
     </footer>
     <div class="mobile-actions">
-      <a class="mobile-call" href="tel:+15419921237" aria-label="Call 101 Detailers at 541-992-1237"><span>Call 101 Detailers</span><strong>541-992-1237</strong></a>
-      <a class="mobile-text" href="sms:+15419921237" aria-label="Text 101 Detailers for a quote"><span>Text for a quote</span><strong>SMS</strong></a>
+      <a class="mobile-call" href="tel:+15419921237" aria-label="Call 101 Detailers at 541-992-1237">Call by phone</a>
+      <a class="mobile-text" href="sms:+15419921237" aria-label="Text 101 Detailers for a quote">SMS by phone</a>
     </div>
     <script>
       if ("serviceWorker" in navigator)
@@ -341,6 +368,7 @@
       installButtons.forEach((button) =>
         button.addEventListener("click", async () => {
           if (!installPrompt) return;
+          trackConversion("install_click");
           await installPrompt.prompt();
           installPrompt = undefined;
           installButtons.forEach((item) => {
@@ -357,6 +385,45 @@
       const quoteStatus = document.querySelector("#quote-status");
       const quoteLoadedAt = document.querySelector("#quote-loaded-at");
       if (quoteLoadedAt) quoteLoadedAt.value = String(Date.now());
+      const query = new URLSearchParams(window.location.search);
+      ["utm_source", "utm_medium", "utm_campaign"].forEach((name) => {
+        const field = quoteForm?.elements.namedItem(name);
+        if (field) field.value = query.get(name) || "";
+      });
+      const conversionContext = {
+        path: window.location.pathname,
+        source: query.get("utm_source") || "direct",
+        medium: query.get("utm_medium") || "none",
+        campaign: query.get("utm_campaign") || "none",
+      };
+      const trackConversion = (event) => {
+        const body = JSON.stringify({ event, ...conversionContext });
+        if (navigator.sendBeacon) {
+          navigator.sendBeacon("/api/conversion", new Blob([body], { type: "application/json" }));
+        } else {
+          fetch("/api/conversion", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body,
+            keepalive: true,
+          }).catch(() => {});
+        }
+      };
+      document.querySelectorAll('a[href^="tel:"]').forEach((link) =>
+        link.addEventListener("click", () => trackConversion("call_click")),
+      );
+      document.querySelectorAll('a[href^="sms:"]').forEach((link) =>
+        link.addEventListener("click", () => trackConversion("sms_click")),
+      );
+      document.querySelectorAll('a[href^="mailto:"]').forEach((link) =>
+        link.addEventListener("click", () => trackConversion("email_click")),
+      );
+      let quoteStarted = false;
+      quoteForm?.addEventListener("focusin", () => {
+        if (quoteStarted) return;
+        quoteStarted = true;
+        trackConversion("quote_start");
+      });
       quoteForm?.addEventListener("submit", async (event) => {
         event.preventDefault();
         const submitButton = quoteForm.querySelector(".submit-button");

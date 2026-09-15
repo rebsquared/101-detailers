@@ -740,6 +740,7 @@ footer {
     gap: 8px;
     padding-bottom: calc(112px + env(safe-area-inset-bottom));
   }
+}
 @media (max-width: 390px) {
   .utility-bar span {
     display: none;
@@ -808,7 +809,7 @@ footer {
 .mobile-actions a {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 8px;
   padding: 13px 15px;
   border: 1px solid #d8e8f5;
@@ -818,6 +819,8 @@ footer {
   text-decoration: none;
   box-shadow: 0 15px 45px rgba(0, 0, 0, 0.55);
   backdrop-filter: blur(14px);
+  font-size: 0.92rem;
+  font-weight: 850;
 }
 .mobile-actions span {
   font-size: 0.78rem;
