@@ -1,17 +1,25 @@
 <style>
   .reviews-intro { max-width: 720px; }
-  .review-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin: 28px 0 24px; }
-  .review-card { position: relative; overflow: hidden; padding: 26px; border: 1px solid rgba(255,255,255,.12); border-radius: 22px; background: linear-gradient(145deg, rgba(255,255,255,.075), rgba(255,255,255,.025)); box-shadow: 0 18px 50px rgba(0,0,0,.22); }
-  .review-card::before { content: ""; position: absolute; inset: 0 auto auto 0; width: 100%; height: 2px; background: linear-gradient(90deg, transparent, #f4ad27, transparent); opacity: .8; }
-  .review-stars { margin: 0 0 14px; color: #f4ad27; font-size: 1.05rem; letter-spacing: .12em; }
-  .review-card h3 { margin: 0 0 12px; color: #fff; font-size: 1.25rem; }
-  .review-card > p:not(.review-stars) { margin: 0; color: #c8d5df; line-height: 1.7; }
-  .review-card span { display: block; margin-top: 18px; color: #8297a8; font-size: .72rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+  .review-carousel-wrap { position: relative; margin: 28px 0 24px; }
+  .review-carousel { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(82%, 560px); gap: 18px; overflow-x: auto; padding: 4px 2px 18px; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .review-carousel::-webkit-scrollbar { display: none; }
+  .review-card { scroll-snap-align: start; position: relative; overflow: hidden; padding: 28px; border: 1px solid rgba(255,255,255,.12); border-radius: 24px; background: linear-gradient(145deg, rgba(255,255,255,.075), rgba(255,255,255,.025)); box-shadow: 0 18px 50px rgba(0,0,0,.22); }
+  .review-card::before { content: ""; position: absolute; inset: 0 auto auto 0; width: 100%; height: 2px; background: linear-gradient(90deg, transparent, #f4ad27, #ffd77a, #f4ad27, transparent); opacity: .95; }
+  .review-stars { margin: 0 0 14px; color: #f4ad27; font-size: 1.22rem; letter-spacing: .13em; text-shadow: 0 0 14px rgba(244,173,39,.28); }
+  .review-card h3 { margin: 0 0 12px; color: #fff; font-size: 1.28rem; }
+  .review-preview, .review-full { margin: 0; color: #c8d5df; line-height: 1.7; }
+  .review-full { margin-top: 12px; }
+  .review-more { margin-top: 18px; border: 0; padding: 0; background: none; color: #ffd77a; font: inherit; font-size: .83rem; font-weight: 900; letter-spacing: .07em; text-transform: uppercase; cursor: pointer; }
+  .review-controls { display: flex; align-items: center; justify-content: flex-end; gap: 9px; margin-top: 10px; }
+  .review-arrow { width: 44px; height: 44px; border: 1px solid #5f7890; border-radius: 50%; background: rgba(7,18,30,.82); color: #fff; font-size: 1.2rem; cursor: pointer; }
+  .review-arrow:hover { border-color: #f4ad27; color: #ffd77a; }
   .review-actions { justify-content: center; text-align: center; }
   .review-actions .text-button { display: inline-flex; align-items: center; justify-content: center; font-weight: 900; text-align: center; }
   @media (max-width: 700px) {
-    .review-grid { grid-template-columns: 1fr; }
-    .review-card { padding: 22px; }
+    .review-carousel { grid-auto-columns: 91%; gap: 12px; }
+    .review-card { padding: 23px; }
+    .review-stars { font-size: 1.15rem; }
+    .review-controls { justify-content: center; }
     .review-actions { justify-items: center; text-align: center; }
     .review-actions > a { width: 100%; justify-content: center; text-align: center; }
   }
@@ -20,36 +28,66 @@
   <div class="reviews-intro">
     <p class="eyebrow">Customer reviews</p>
     <h2 id="reviews-title">What customers say about 101 Detailers.</h2>
-    <p>Four review cards are staged here while the exact verified wording is transferred from the original customer review records.</p>
+    <p>Swipe or use the arrows to move through customer reviews. Tap “Read more” to expand any review.</p>
   </div>
-  <div class="review-grid">
-    <article class="review-card">
-      <p class="review-stars" aria-label="5 out of 5 stars">★★★★★</p>
-      <h3>April P.</h3>
-      <p>101 Detailers absolutely knocked it out of the park. My car looked incredible when they were finished. I went cruising that evening, got compliments everywhere I stopped, and ended up taking it to a local show looking better than it ever has. The attention to detail was unreal.</p>
-      <span>Review preview</span>
-    </article>
-    <article class="review-card">
-      <p class="review-stars" aria-label="5 out of 5 stars">★★★★★</p>
-      <h3>Mary J.</h3>
-      <p>I’ve had my vehicle detailed before, but this was on another level. The paint had a deep shine, the interior looked brand new, and they caught little areas I didn’t even realize needed attention. You can tell they take pride in the work.</p>
-      <span>Review preview</span>
-    </article>
-    <article class="review-card">
-      <p class="review-stars" aria-label="5 out of 5 stars">★★★★★</p>
-      <h3>Mike Hunt</h3>
-      <p>I needed my vehicle cleaned up badly and honestly wasn’t expecting it to come back looking this good. The seats, carpets, dash, wheels—everything was spotless. Super convenient having them come to me, too. I’ll definitely be using 101 Detailers again.</p>
-      <span>Review preview</span>
-    </article>
-    <article class="review-card">
-      <p class="review-stars" aria-label="5 out of 5 stars">★★★★★</p>
-      <h3>Jacob W.</h3>
-      <p>My truck gets used hard and was overdue for a serious detail. When 101 Detailers finished, it looked almost showroom new. They took their time, communicated well, and the final result was way beyond what I expected. Five stars all day.</p>
-      <span>Review preview</span>
-    </article>
+
+  <div class="review-carousel-wrap">
+    <div class="review-carousel" id="review-carousel" aria-label="Customer reviews carousel">
+      <article class="review-card">
+        <p class="review-stars" aria-label="5 out of 5 stars">★★★★★</p>
+        <h3>April P.</h3>
+        <p class="review-preview">101 Detailers absolutely knocked it out of the park. My car looked incredible when they were finished.</p>
+        <p class="review-full" hidden>I went cruising that evening, got compliments everywhere I stopped, and ended up taking it to a local show looking better than it ever has. The attention to detail was unreal.</p>
+        <button class="review-more" type="button" aria-expanded="false">Read more</button>
+      </article>
+      <article class="review-card">
+        <p class="review-stars" aria-label="5 out of 5 stars">★★★★★</p>
+        <h3>Mary J.</h3>
+        <p class="review-preview">I’ve had my vehicle detailed before, but this was on another level. The paint had a deep shine and the interior looked brand new.</p>
+        <p class="review-full" hidden>They caught little areas I didn’t even realize needed attention. You can tell they take pride in the work.</p>
+        <button class="review-more" type="button" aria-expanded="false">Read more</button>
+      </article>
+      <article class="review-card">
+        <p class="review-stars" aria-label="5 out of 5 stars">★★★★★</p>
+        <h3>Mike Hunt</h3>
+        <p class="review-preview">I needed my vehicle cleaned up badly and honestly wasn’t expecting it to come back looking this good.</p>
+        <p class="review-full" hidden>The seats, carpets, dash, wheels—everything was spotless. Super convenient having them come to me, too. I’ll definitely be using 101 Detailers again.</p>
+        <button class="review-more" type="button" aria-expanded="false">Read more</button>
+      </article>
+      <article class="review-card">
+        <p class="review-stars" aria-label="5 out of 5 stars">★★★★★</p>
+        <h3>Jacob W.</h3>
+        <p class="review-preview">My truck gets used hard and was overdue for a serious detail. When 101 Detailers finished, it looked almost showroom new.</p>
+        <p class="review-full" hidden>They took their time, communicated well, and the final result was way beyond what I expected. Five stars all day.</p>
+        <button class="review-more" type="button" aria-expanded="false">Read more</button>
+      </article>
+    </div>
+    <div class="review-controls" aria-label="Review carousel controls">
+      <button class="review-arrow review-prev" type="button" aria-label="Previous review">←</button>
+      <button class="review-arrow review-next" type="button" aria-label="Next review">→</button>
+    </div>
   </div>
+
   <div class="review-actions">
     <a class="outline-button" href="tel:+15419921237">Call 101 Detailers</a>
     <a class="text-button" href="sms:+15419921237">Text for a quote</a>
   </div>
 </section>
+<script>
+  (() => {
+    const carousel = document.querySelector('#review-carousel');
+    if (!carousel) return;
+    const amount = () => Math.max(carousel.clientWidth * .88, 280);
+    document.querySelector('.review-prev')?.addEventListener('click', () => carousel.scrollBy({ left: -amount(), behavior: 'smooth' }));
+    document.querySelector('.review-next')?.addEventListener('click', () => carousel.scrollBy({ left: amount(), behavior: 'smooth' }));
+    document.querySelectorAll('.review-more').forEach((button) => {
+      button.addEventListener('click', () => {
+        const full = button.previousElementSibling;
+        const open = button.getAttribute('aria-expanded') === 'true';
+        button.setAttribute('aria-expanded', String(!open));
+        full.hidden = open;
+        button.textContent = open ? 'Read more' : 'Show less';
+      });
+    });
+  })();
+</script>
