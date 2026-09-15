@@ -145,8 +145,8 @@ a, button, input, select { -webkit-tap-highlight-color: transparent; }
 .quote-copy > p:not(.eyebrow) { color: #486276; font-size: 1.06rem; }
 .phone-display { display: inline-block; margin-top: 20px; color: #07121e; font-size: clamp(1.8rem, 4vw, 3.4rem); font-weight: 900; letter-spacing: -.04em; text-decoration: none; }
 .lead-form { display: grid; grid-template-columns: 1fr 1fr; gap: 17px; }
-.lead-form label { display: grid; gap: 7px; font-size: .82rem; font-weight: 800; }
-.lead-form input, .lead-form select { width: 100%; min-height: 50px; padding: 12px 14px; border: 1px solid #afc1d0; border-radius: 12px; background: #fff; color: #07121e; font: inherit; }
+.lead-form label { min-width: 0; display: grid; gap: 7px; font-size: .82rem; font-weight: 800; }
+.lead-form input, .lead-form select { width: 100%; min-width: 0; max-width: 100%; min-height: 50px; padding: 12px 14px; border: 1px solid #afc1d0; border-radius: 12px; background: #fff; color: #07121e; font: inherit; }
 .submit-button, .form-status, .fineprint { grid-column: 1/-1; }
 .submit-button { border-radius: 14px; background: #07121e; color: #fff; }
 .form-trap { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }

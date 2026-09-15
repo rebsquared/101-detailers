@@ -1,4 +1,4 @@
-const CACHE = "101-detailers-brand-v13";
+const CACHE = "101-detailers-brand-v14";
 const APP_SHELL = [
   "/",
   "/app.html",
@@ -44,7 +44,7 @@ const injectHomeEnhancements = async (response) => {
   if (!html.includes('/install-app.js')) {
     html = html.replace(
       '</body>',
-      '<script src="/install-app.js?v=13"></script>\n  </body>',
+      '<script src="/install-app.js?v=14"></script>\n  </body>',
     );
   }
 
