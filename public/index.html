@@ -21,7 +21,7 @@
   <body>
     <div class="utility-bar">
       <span>Premium mobile auto care</span
-      ><a href="tel:+15419921237">Call 541-992-1237</a>
+      ><a href="tel:+15419921237">Call 541-992-1237</a><a href="sms:+15419921237">Text us</a>
     </div>
     <header class="site-header" id="top">
       <nav class="nav" aria-label="Primary navigation">
@@ -41,7 +41,7 @@
         <div class="nav-actions">
           <button class="install-button" id="install-app" type="button" hidden>
             Install App</button
-          ><a class="call-button compact" href="tel:+15419921237">Call Now</a>
+          ><a class="text-button compact" href="sms:+15419921237">Text</a><a class="call-button compact" href="tel:+15419921237">Call Now</a>
         </div>
       </nav>
     </header>
@@ -71,7 +71,7 @@
           <div class="hero-actions">
             <a class="call-button" href="tel:+15419921237"
               ><span>Call for service</span><strong>541-992-1237</strong></a
-            ><a class="outline-button" href="#quote">Book Now</a>
+            ><a class="outline-button" href="#quote">Request a Quote</a>
           </div>
         </div>
       </section>
@@ -213,48 +213,24 @@
       >
         <div>
           <p class="eyebrow">Customer reviews</p>
-          <h2 id="reviews-title">Real feedback is coming here.</h2>
+          <h2 id="reviews-title">Verified reviews are coming next.</h2>
           <p>
-            This section is reserved for selected, verified reviews from the
-            official 101 Detailers Google Maps profile. No placeholder
-            testimonial is presented as a customer statement.
+            We’re preparing a selected set of verified reviews from the official
+            101 Detailers profile. No placeholder testimonial is presented as a
+            customer statement.
           </p>
         </div>
-        <a class="outline-button" href="tel:+15419921237">Call 101 Detailers</a>
+        <div class="review-actions"><a class="outline-button" href="tel:+15419921237">Call 101 Detailers</a><a class="text-button" href="sms:+15419921237">Text for a quote</a></div>
       </section>
 
-      <section class="app-panel section-tight" aria-labelledby="app-title">
-        <img
-          src="/assets/101-detailers-shield-v2.png"
-          alt=""
-          width="190"
-          height="190"
-          loading="lazy"
-        />
-        <div>
-          <p class="eyebrow">101 Detailers on your phone</p>
-          <h2 id="app-title">Keep us one tap away.</h2>
-          <p>
-            Install the 101 Detailers web app for fast access to services, quote
-            requests, reviews, and the main call button.
-          </p>
-        </div>
-        <button
-          class="outline-button install-cta"
-          id="install-app-secondary"
-          type="button"
-          hidden
-        >
-          Install 101 Detailers
-        </button>
-      </section>
+
 
       <section class="quote-section" id="quote">
         <div class="quote-copy">
           <p class="eyebrow">Request your quote</p>
           <h2>Tell us about your vehicle.</h2>
           <p>Prefer to talk now? Call the main 101 Detailers number.</p>
-          <a class="phone-display" href="tel:+15419921237">541-992-1237</a>
+          <a class="phone-display" href="tel:+15419921237">541-992-1237</a><a class="text-display" href="sms:+15419921237">Text for a faster reply</a>
         </div>
         <form
           class="lead-form"
@@ -289,10 +265,35 @@
           ><label>Preferred date<input name="date" type="date" /></label
           ><button class="submit-button" type="submit">Request My Quote</button>
           <p class="fineprint">
-            This preview opens your email app. A dedicated lead system will
-            replace it before launch.
+            We’ll contact you to confirm pricing, availability, and your appointment.
           </p>
         </form>
+      </section>
+
+      <section class="app-panel section-tight" aria-labelledby="app-title">
+        <img
+          src="/assets/101-detailers-shield-v2.png"
+          alt=""
+          width="190"
+          height="190"
+          loading="lazy"
+        />
+        <div>
+          <p class="eyebrow">101 Detailers on your phone</p>
+          <h2 id="app-title">Keep us one tap away.</h2>
+          <p>
+            Install the 101 Detailers web app for fast access to services, quote
+            requests, reviews, and the main call button.
+          </p>
+        </div>
+        <button
+          class="outline-button install-cta"
+          id="install-app-secondary"
+          type="button"
+          hidden
+        >
+          Install 101 Detailers
+        </button>
       </section>
     </main>
 
@@ -306,14 +307,12 @@
         /><span>101 Detailers</span></a
       >
       <p>Premium mobile auto care.</p>
-      <a class="footer-call" href="tel:+15419921237">541-992-1237</a>
+      <div class="footer-actions"><a class="footer-call" href="tel:+15419921237">Call 541-992-1237</a><a class="footer-text" href="sms:+15419921237">Text us</a></div>
     </footer>
-    <a
-      class="mobile-call"
-      href="tel:+15419921237"
-      aria-label="Call 101 Detailers at 541-992-1237"
-      ><span>Call 101 Detailers</span><strong>541-992-1237</strong></a
-    >
+    <div class="mobile-actions">
+      <a class="mobile-call" href="tel:+15419921237" aria-label="Call 101 Detailers at 541-992-1237"><span>Call 101 Detailers</span><strong>541-992-1237</strong></a>
+      <a class="mobile-text" href="sms:+15419921237" aria-label="Text 101 Detailers for a quote"><span>Text for a quote</span><strong>SMS</strong></a>
+    </div>
     <script>
       if ("serviceWorker" in navigator)
         window.addEventListener("load", () =>
