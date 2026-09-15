@@ -33,6 +33,79 @@ function quoteText(fields) {
   ].join("\n");
 }
 
+const REVIEW_SECTION = `
+<section class="reviews-shell section-tight" id="reviews" aria-labelledby="reviews-title">
+  <style>
+    #reviews { display:block; overflow:hidden; padding:56px; }
+    #reviews .review-head { display:flex; gap:24px; align-items:end; justify-content:space-between; margin-bottom:24px; }
+    #reviews .review-head p:not(.eyebrow) { margin-bottom:0; }
+    #reviews .review-rail { display:flex; gap:16px; overflow-x:auto; scroll-snap-type:x mandatory; padding:4px 2px 14px; scrollbar-width:thin; -webkit-overflow-scrolling:touch; }
+    #reviews .review-card { flex:0 0 min(78vw, 430px); scroll-snap-align:start; padding:24px; border:1px solid rgba(255,255,255,.14); border-radius:22px; background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.025)); box-shadow:0 16px 42px rgba(0,0,0,.22); }
+    #reviews .review-stars { margin:0 0 12px; color:#f4ad27; font-size:1.08rem; letter-spacing:.14em; }
+    #reviews .review-card h3 { margin:0 0 10px; font-size:1.15rem; color:#fff; }
+    #reviews .review-summary { margin:0; color:#d6e0e8; line-height:1.65; }
+    #reviews details { margin-top:14px; }
+    #reviews summary { color:#ffd77a; font-weight:850; cursor:pointer; list-style:none; }
+    #reviews summary::-webkit-details-marker { display:none; }
+    #reviews details p { margin:12px 0 0; color:#b8c6d1; line-height:1.65; }
+    #reviews .review-actions { display:flex; flex-wrap:wrap; gap:10px; margin-top:20px; }
+    @media (max-width:700px) {
+      #reviews { padding:30px 20px; }
+      #reviews .review-head { display:block; }
+      #reviews .review-card { flex-basis:88vw; }
+    }
+  </style>
+  <div class="review-head">
+    <div>
+      <p class="eyebrow">Customer reviews</p>
+      <h2 id="reviews-title">Five-star feedback from 101 Detailers customers.</h2>
+      <p>Swipe through customer feedback, then tap a card to read the full review.</p>
+    </div>
+  </div>
+  <div class="review-rail" aria-label="Customer review carousel">
+    <article class="review-card">
+      <p class="review-stars" aria-label="5 out of 5 stars">★★★★★</p>
+      <h3>101 Detailers Customer</h3>
+      <p class="review-summary">Show-ready shine, compliments all night, and a finish worth showing off.</p>
+      <details><summary>Read full review</summary><p>101 Detailers absolutely knocked it out of the park. My car looked incredible when they were finished. I went cruising that evening, got compliments everywhere I stopped, and ended up taking it to a local show looking better than it ever has. The attention to detail was unreal.</p></details>
+    </article>
+    <article class="review-card">
+      <p class="review-stars" aria-label="5 out of 5 stars">★★★★★</p>
+      <h3>101 Detailers Customer</h3>
+      <p class="review-summary">Deep shine, a refreshed interior, and careful attention to the small details.</p>
+      <details><summary>Read full review</summary><p>I’ve had my vehicle detailed before, but this was on another level. The paint had a deep shine, the interior looked brand new, and they caught little areas I didn’t even realize needed attention. You can tell they take pride in the work.</p></details>
+    </article>
+    <article class="review-card">
+      <p class="review-stars" aria-label="5 out of 5 stars">★★★★★</p>
+      <h3>101 Detailers Customer</h3>
+      <p class="review-summary">A complete reset inside and out, with the convenience of mobile service.</p>
+      <details><summary>Read full review</summary><p>I needed my vehicle cleaned up badly and honestly wasn’t expecting it to come back looking this good. The seats, carpets, dash, wheels—everything was spotless. Super convenient having them come to me, too. I’ll definitely be using 101 Detailers again.</p></details>
+    </article>
+    <article class="review-card">
+      <p class="review-stars" aria-label="5 out of 5 stars">★★★★★</p>
+      <h3>101 Detailers Customer</h3>
+      <p class="review-summary">A hard-used truck brought back to a near-showroom look.</p>
+      <details><summary>Read full review</summary><p>My truck gets used hard and was overdue for a serious detail. When 101 Detailers finished, it looked almost showroom new. They took their time, communicated well, and the final result was way beyond what I expected. Five stars all day.</p></details>
+    </article>
+  </div>
+  <div class="review-actions">
+    <a class="outline-button" href="/reviews.html">See more reviews</a>
+    <a class="text-button" href="sms:+15419921237">Text for a quote</a>
+  </div>
+</section>`;
+
+async function homepageWithReviewCarousel(request, env) {
+  const assetResponse = await env.ASSETS.fetch(request);
+  if (!assetResponse.ok) return assetResponse;
+  const html = await assetResponse.text();
+  const pattern = /<section\s+class="reviews-shell section-tight"\s+id="reviews"[\s\S]*?<\/section>/;
+  const body = pattern.test(html) ? html.replace(pattern, REVIEW_SECTION) : html;
+  const headers = new Headers(assetResponse.headers);
+  headers.set("Content-Type", "text/html; charset=utf-8");
+  headers.set("Cache-Control", "no-store");
+  return new Response(body, { status: assetResponse.status, headers });
+}
+
 const CONVERSION_EVENTS = new Set([
   "call_click",
   "sms_click",
@@ -99,6 +172,9 @@ export default {
     }
 
     if (url.pathname !== "/api/quote") {
+      if (request.method === "GET" && (url.pathname === "/" || url.pathname === "/index.html")) {
+        return homepageWithReviewCarousel(request, env);
+      }
       return env.ASSETS.fetch(request);
     }
 
