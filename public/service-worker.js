@@ -1,29 +1,35 @@
-const CACHE = '101-detailers-brand-v3';
+const CACHE = "101-detailers-brand-v4";
 const APP_SHELL = [
-  '/',
-  '/styles.css',
-  '/manifest.webmanifest',
-  '/assets/101-detailers-hero.jpeg',
-  '/assets/101-detailers-shield-v2.png',
-  '/assets/icons/icon-192.png',
-  '/assets/icons/icon-512.png'
+  "/",
+  "/styles.css",
+  "/manifest.webmanifest",
+  "/assets/101-detailers-hero-poster.jpg",
+  "/assets/101-detailers-shield-v2.png",
+  "/assets/icons/icon-192.png",
+  "/assets/icons/icon-512.png",
 ];
 
-self.addEventListener('install', (event) => {
+self.addEventListener("install", (event) => {
   event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(APP_SHELL)));
   self.skipWaiting();
 });
 
-self.addEventListener('activate', (event) => {
+self.addEventListener("activate", (event) => {
   event.waitUntil(
-    caches.keys()
-      .then((keys) => Promise.all(keys.filter((key) => key !== CACHE).map((key) => caches.delete(key))))
-      .then(() => self.clients.claim())
+    caches
+      .keys()
+      .then((keys) =>
+        Promise.all(
+          keys.filter((key) => key !== CACHE).map((key) => caches.delete(key)),
+        ),
+      )
+      .then(() => self.clients.claim()),
   );
 });
 
-self.addEventListener('fetch', (event) => {
-  if (event.request.method !== 'GET') return;
+self.addEventListener("fetch", (event) => {
+  if (event.request.method !== "GET") return;
+  if (event.request.headers.has("range")) return;
   event.respondWith(
     fetch(event.request)
       .then((response) => {
@@ -31,6 +37,10 @@ self.addEventListener('fetch', (event) => {
         caches.open(CACHE).then((cache) => cache.put(event.request, copy));
         return response;
       })
-      .catch(() => caches.match(event.request).then((cached) => cached || caches.match('/')))
+      .catch(() =>
+        caches
+          .match(event.request)
+          .then((cached) => cached || caches.match("/")),
+      ),
   );
 });
