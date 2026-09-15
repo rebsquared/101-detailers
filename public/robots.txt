@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://101detailers.com/sitemap.xml

@@ -7,5 +7,11 @@
 /styles.css
   Cache-Control: no-cache, must-revalidate
 
+/app.html
+  X-Robots-Tag: noindex, follow
+
+/reviews.html
+  X-Robots-Tag: noindex, nofollow
+
 /assets/101-detailers-hero-video.mp4
   Cache-Control: public, max-age=3600

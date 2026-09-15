@@ -7,6 +7,8 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="101 Detailers" />
+  <meta name="robots" content="noindex, follow" />
+  <link rel="canonical" href="https://101detailers.com/" />
   <title>101 Detailers</title>
   <link rel="manifest" href="/manifest.webmanifest" />
   <link rel="apple-touch-icon" href="/assets/icons/icon-192.png" />
@@ -58,7 +60,7 @@
   </main>
   <script>
     if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => navigator.serviceWorker.register('/service-worker.js?v=14', { updateViaCache: 'none' }));
+      window.addEventListener('load', () => navigator.serviceWorker.register('/service-worker.js?v=15', { updateViaCache: 'none' }));
     }
   </script>
 </body>
