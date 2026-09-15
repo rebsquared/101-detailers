@@ -14,11 +14,5 @@
       "destination_address": "rebsquared@gmail.com",
       "allowed_sender_addresses": ["info@101detailers.com"]
     }
-  ],
-  "analytics_engine_datasets": [
-    {
-      "binding": "CONVERSIONS",
-      "dataset": "detailers_conversions"
-    }
   ]
 }
