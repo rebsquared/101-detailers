@@ -1,6 +1,7 @@
-const CACHE = "101-detailers-brand-v10";
+const CACHE = "101-detailers-brand-v11";
 const APP_SHELL = [
   "/",
+  "/app.html",
   "/styles.css",
   "/reviews.html",
   "/manifest.webmanifest",
@@ -45,10 +46,11 @@ const injectReviews = async (response) => {
 self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET") return;
   if (event.request.headers.has("range")) return;
+  const url = new URL(event.request.url);
   const isHomeNavigation =
     event.request.mode === "navigate" &&
-    new URL(event.request.url).origin === self.location.origin &&
-    new URL(event.request.url).pathname === "/";
+    url.origin === self.location.origin &&
+    url.pathname === "/";
   const networkRequest =
     event.request.mode === "navigate"
       ? new Request(event.request, { cache: "no-store" })
@@ -64,7 +66,7 @@ self.addEventListener("fetch", (event) => {
       .catch(() =>
         caches
           .match(event.request)
-          .then((cached) => cached || caches.match("/")),
+          .then((cached) => cached || caches.match("/app.html") || caches.match("/")),
       ),
   );
 });
