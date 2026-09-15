@@ -234,9 +234,9 @@
         </div>
         <form
           class="lead-form"
-          action="mailto:info@101detailers.com"
+          action="/api/quote"
           method="post"
-          enctype="text/plain"
+          enctype="application/x-www-form-urlencoded"
         >
           <label>Name<input name="name" autocomplete="name" required /></label
           ><label
@@ -263,7 +263,8 @@
               autocomplete="postal-code"
               required /></label
           ><label>Preferred date<input name="date" type="date" /></label
-          ><button class="submit-button" type="submit">Request My Quote</button>
+          ><label class="form-trap" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off" /></label><input id="quote-loaded-at" name="submitted_at" type="hidden" /><button class="submit-button" type="submit">Request My Quote</button>
+          <p class="form-status" id="quote-status" role="status" aria-live="polite"></p>
           <p class="fineprint">
             We’ll contact you to confirm pricing, availability, and your appointment.
           </p>
@@ -352,6 +353,40 @@
           button.hidden = true;
         }),
       );
+      const quoteForm = document.querySelector(".lead-form");
+      const quoteStatus = document.querySelector("#quote-status");
+      const quoteLoadedAt = document.querySelector("#quote-loaded-at");
+      if (quoteLoadedAt) quoteLoadedAt.value = String(Date.now());
+      quoteForm?.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const submitButton = quoteForm.querySelector(".submit-button");
+        const originalLabel = submitButton.textContent;
+        submitButton.disabled = true;
+        submitButton.textContent = "Sending…";
+        quoteStatus.dataset.state = "";
+        quoteStatus.textContent = "Sending your request securely…";
+        try {
+          const response = await fetch(quoteForm.action, {
+            method: "POST",
+            body: new FormData(quoteForm),
+            headers: { Accept: "application/json" },
+          });
+          const result = await response.json();
+          if (!response.ok) throw new Error(result.error);
+          quoteForm.reset();
+          quoteLoadedAt.value = String(Date.now());
+          quoteStatus.dataset.state = "success";
+          quoteStatus.textContent = result.message;
+        } catch (error) {
+          quoteStatus.dataset.state = "error";
+          quoteStatus.textContent =
+            error?.message ||
+            "We could not send your request. Please call or text 541-992-1237.";
+        } finally {
+          submitButton.disabled = false;
+          submitButton.textContent = originalLabel;
+        }
+      });
     </script>
   </body>
 </html>

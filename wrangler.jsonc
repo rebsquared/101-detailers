@@ -1,8 +1,18 @@
 {
   "name": "101-detailers",
-  "compatibility_date": "2026-09-14",
+  "main": "./src/index.js",
+  "compatibility_date": "2026-09-15",
   "assets": {
     "directory": "./public",
-    "not_found_handling": "single-page-application"
-  }
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api/*"]
+  },
+  "send_email": [
+    {
+      "name": "QUOTE_EMAIL",
+      "destination_address": "rebsquared@gmail.com",
+      "allowed_sender_addresses": ["info@101detailers.com"]
+    }
+  ]
 }
