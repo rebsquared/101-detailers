@@ -7,7 +7,14 @@
   .review-card h3 { margin: 0 0 12px; color: #fff; font-size: 1.25rem; }
   .review-card > p:not(.review-stars) { margin: 0; color: #c8d5df; line-height: 1.7; }
   .review-card span { display: block; margin-top: 18px; color: #8297a8; font-size: .72rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
-  @media (max-width: 700px) { .review-grid { grid-template-columns: 1fr; } .review-card { padding: 22px; } }
+  .review-actions { justify-content: center; text-align: center; }
+  .review-actions .text-button { display: inline-flex; align-items: center; justify-content: center; font-weight: 900; text-align: center; }
+  @media (max-width: 700px) {
+    .review-grid { grid-template-columns: 1fr; }
+    .review-card { padding: 22px; }
+    .review-actions { justify-items: center; text-align: center; }
+    .review-actions > a { width: 100%; justify-content: center; text-align: center; }
+  }
 </style>
 <section class="reviews-shell section-tight" id="reviews" aria-labelledby="reviews-title">
   <div class="reviews-intro">
