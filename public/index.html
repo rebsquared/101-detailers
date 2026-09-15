@@ -79,7 +79,7 @@
           poster="/assets/101-detailers-hero-poster.jpg"
           aria-hidden="true"
         >
-          <source src="/assets/101-detailers-hero-video.mp4" type="video/mp4" />
+          <source src="/assets/101-detailers-hero-video.mp4?v=2" type="video/mp4" />
         </video>
         <div class="hero-shade"></div>
         <div class="hero-content">
@@ -344,7 +344,7 @@
     <script>
       if ("serviceWorker" in navigator)
         window.addEventListener("load", () =>
-          navigator.serviceWorker.register("/service-worker.js"),
+          navigator.serviceWorker.register("/service-worker.js?v=8"),
         );
       const heroVideo = document.querySelector(".hero video");
       if (

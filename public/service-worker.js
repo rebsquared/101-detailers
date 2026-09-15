@@ -1,4 +1,4 @@
-const CACHE = "101-detailers-brand-v7";
+const CACHE = "101-detailers-brand-v8";
 const APP_SHELL = [
   "/",
   "/styles.css",
