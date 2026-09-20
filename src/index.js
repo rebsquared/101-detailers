@@ -65,6 +65,12 @@ const REVIEW_SECTION = `
   <div class="review-rail" aria-label="Customer review carousel">
     <article class="review-card">
       <p class="review-stars" aria-label="5 out of 5 stars">★★★★★</p>
+      <h3>Blake Sardella · Google Review</h3>
+      <p class="review-summary">Made my car look like I just bought it.</p>
+      <details><summary>Read full review</summary><p>This guy gets it done right! He’s made my baby look like I just bought it! Highly would get your details in with 101 detailers!!</p></details>
+    </article>
+    <article class="review-card">
+      <p class="review-stars" aria-label="5 out of 5 stars">★★★★★</p>
       <h3>101 Detailers Customer</h3>
       <p class="review-summary">Show-ready shine, compliments all night, and a finish worth showing off.</p>
       <details><summary>Read full review</summary><p>101 Detailers absolutely knocked it out of the park. My car looked incredible when they were finished. I went cruising that evening, got compliments everywhere I stopped, and ended up taking it to a local show looking better than it ever has. The attention to detail was unreal.</p></details>
@@ -74,12 +80,6 @@ const REVIEW_SECTION = `
       <h3>101 Detailers Customer</h3>
       <p class="review-summary">Deep shine, a refreshed interior, and careful attention to the small details.</p>
       <details><summary>Read full review</summary><p>I’ve had my vehicle detailed before, but this was on another level. The paint had a deep shine, the interior looked brand new, and they caught little areas I didn’t even realize needed attention. You can tell they take pride in the work.</p></details>
-    </article>
-    <article class="review-card">
-      <p class="review-stars" aria-label="5 out of 5 stars">★★★★★</p>
-      <h3>Blake Sardella · Google Review</h3>
-      <p class="review-summary">Made my car look like I just bought it.</p>
-      <details><summary>Read full review</summary><p>This guy gets it done right! He’s made my baby look like I just bought it! Highly would get your details in with 101 detailers!!</p></details>
     </article>
     <article class="review-card">
       <p class="review-stars" aria-label="5 out of 5 stars">★★★★★</p>
