@@ -77,9 +77,9 @@ const REVIEW_SECTION = `
     </article>
     <article class="review-card">
       <p class="review-stars" aria-label="5 out of 5 stars">★★★★★</p>
-      <h3>101 Detailers Customer</h3>
-      <p class="review-summary">A complete reset inside and out, with the convenience of mobile service.</p>
-      <details><summary>Read full review</summary><p>I needed my vehicle cleaned up badly and honestly wasn’t expecting it to come back looking this good. The seats, carpets, dash, wheels—everything was spotless. Super convenient having them come to me, too. I’ll definitely be using 101 Detailers again.</p></details>
+      <h3>Blake Sardella · Google Review</h3>
+      <p class="review-summary">Made my car look like I just bought it.</p>
+      <details><summary>Read full review</summary><p>This guy gets it done right! He’s made my baby look like I just bought it! Highly would get your details in with 101 detailers!!</p></details>
     </article>
     <article class="review-card">
       <p class="review-stars" aria-label="5 out of 5 stars">★★★★★</p>
