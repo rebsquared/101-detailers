@@ -91,5 +91,9 @@ test("injects Blake Sardella’s verified Google review on the homepage", async 
 
   assert.match(html, /Blake Sardella · Google Review/);
   assert.match(html, /This guy gets it done right!/);
+  assert.ok(
+    html.indexOf("Blake Sardella · Google Review") < html.indexOf("Show-ready shine"),
+    "Blake’s verified review should be the first carousel card",
+  );
   assert.doesNotMatch(html, /A complete reset inside and out/);
 });
