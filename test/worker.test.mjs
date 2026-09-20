@@ -76,3 +76,20 @@ test("sends a valid quote and records one server-side success", async () => {
   assert.equal(analytics.length, 1);
   assert.equal(analytics[0].blobs[0], "quote_submit_success");
 });
+
+
+test("injects Blake Sardella’s verified Google review on the homepage", async () => {
+  const { env } = environment();
+  env.ASSETS.fetch = () =>
+    new Response(
+      '<main><section class="reviews-shell section-tight" id="reviews">Placeholder</section></main>',
+      { headers: { "Content-Type": "text/html" } },
+    );
+
+  const response = await worker.fetch(new Request("https://101detailers.com/"), env);
+  const html = await response.text();
+
+  assert.match(html, /Blake Sardella · Google Review/);
+  assert.match(html, /This guy gets it done right!/);
+  assert.doesNotMatch(html, /A complete reset inside and out/);
+});
