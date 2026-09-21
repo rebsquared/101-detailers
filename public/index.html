@@ -27,7 +27,7 @@
     <link rel="manifest" href="/manifest.webmanifest" />
     <link rel="icon" href="/assets/icons/icon-192.png" />
     <link rel="apple-touch-icon" href="/assets/icons/icon-192.png" />
-    <link rel="stylesheet" href="/styles.css?v=11" />
+    <link rel="stylesheet" href="/styles.css?v=12" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -63,9 +63,24 @@
           "@type": "OfferCatalog",
           "name": "Mobile auto detailing services",
           "itemListElement": [
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Exterior auto detailing" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Complete auto detailing" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Interior auto detailing" } }
+            {
+              "@type": "Offer",
+              "priceCurrency": "USD",
+              "price": "250",
+              "itemOffered": { "@type": "Service", "name": "Complete mobile detail" }
+            },
+            {
+              "@type": "Offer",
+              "priceCurrency": "USD",
+              "price": "500",
+              "itemOffered": { "@type": "Service", "name": "Mobile detail, polish and wax" }
+            },
+            {
+              "@type": "Offer",
+              "priceCurrency": "USD",
+              "price": "750",
+              "itemOffered": { "@type": "Service", "name": "Intensive vehicle restoration detail" }
+            }
           ]
         }
       }
@@ -150,39 +165,44 @@
       <section class="service-grid section-tight">
         <article class="service-card">
           <p class="service-number">01</p>
-          <h3>Exterior Detail</h3>
+          <p class="service-price"><span>Starting at</span> $250</p>
+          <h3>Complete Detail</h3>
           <p>
-            Deep wash, wheels, trim, glass, decontamination, and finishing work
-            designed to restore a clean, polished presentation.
+            A professional interior-and-exterior reset for regularly maintained
+            vehicles, including careful cleaning of the cabin, body, wheels,
+            trim, and glass.
           </p>
-          <a href="tel:+15419921237"
-            >Call for an exterior quote <span>→</span></a
-          >
+          <a href="#quote">Request a $250 detail <span>→</span></a>
         </article>
         <article class="service-card featured">
           <p class="service-number">02</p>
-          <p class="tag">Complete care</p>
-          <h3>Complete Detail</h3>
+          <p class="tag">Most popular</p>
+          <p class="service-price"><span>Starting at</span> $500</p>
+          <h3>Detail + Polish &amp; Wax</h3>
           <p>
-            A thorough inside-and-out reset for vehicles that need comprehensive
-            attention and a noticeably refreshed finish.
+            Complete detailing plus machine polishing and wax protection to
+            improve gloss, refine light imperfections, and leave a protected
+            finish.
           </p>
-          <a href="tel:+15419921237"
-            >Call for a complete-detail quote <span>→</span></a
-          >
+          <a href="#quote">Request polish &amp; wax <span>→</span></a>
         </article>
         <article class="service-card">
           <p class="service-number">03</p>
-          <h3>Interior Detail</h3>
+          <p class="service-price"><span>Starting at</span> $750</p>
+          <h3>Intensive Restoration</h3>
           <p>
-            Focused cleaning of surfaces, carpets, upholstery, glass, and
-            high-touch areas with careful attention to material and finish.
+            Extra labor for severe pet hair, heavy stains, neglected interiors,
+            or paint and scratch correction. Inspection and a condition-based
+            quote are required.
           </p>
-          <a href="tel:+15419921237"
-            >Call for an interior quote <span>→</span></a
-          >
+          <a href="#quote">Request a restoration quote <span>→</span></a>
         </article>
       </section>
+      <p class="pricing-note section-tight">
+        Starting prices reflect typical vehicle size and condition. Final pricing
+        is confirmed after reviewing the vehicle, service location, and level of
+        correction required.
+      </p>
 
       <section class="experience" id="why-101">
         <div class="experience-mark">
@@ -330,9 +350,9 @@
               required /></label
           ><label
             >Service<select name="service">
-              <option>Complete detail</option>
-              <option>Exterior detail</option>
-              <option>Interior detail</option>
+              <option>Complete detail — starting at $250</option>
+              <option>Detail + polish &amp; wax — starting at $500</option>
+              <option>Intensive restoration — starting at $750</option>
               <option>Not sure yet</option>
             </select></label
           ><label
@@ -399,7 +419,7 @@
     <script>
       if ("serviceWorker" in navigator)
         window.addEventListener("load", () =>
-          navigator.serviceWorker.register("/service-worker.js?v=15", { updateViaCache: "none" }).then((registration) => registration.update()),
+          navigator.serviceWorker.register("/service-worker.js?v=16", { updateViaCache: "none" }).then((registration) => registration.update()),
         );
       const heroVideo = document.querySelector(".hero video");
       if (
