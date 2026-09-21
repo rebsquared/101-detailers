@@ -114,7 +114,10 @@ a, button, input, select { -webkit-tap-highlight-color: transparent; }
 .service-card.featured { background: linear-gradient(150deg, #153b5c, #0b1c2d); border-color: #547794; }
 .service-number { margin: 0; color: #708ba2; font-size: .76rem; font-weight: 850; letter-spacing: .15em; }
 .service-card .tag { position: absolute; top: 27px; right: 27px; margin: 0; padding: 6px 10px; border: 1px solid #668aa7; border-radius: 999px; color: #d8e7f3; font-size: .67rem; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; }
-.service-card h3 { margin: auto 0 14px; font-size: clamp(1.8rem, 3vw, 2.6rem); line-height: 1; }
+.service-price { margin: auto 0 10px; color: var(--white); font-size: clamp(1.9rem, 3.2vw, 2.8rem); font-weight: 900; letter-spacing: -.045em; line-height: 1; }
+.service-price span { display: block; margin-bottom: 8px; color: var(--amber2); font-size: .68rem; font-weight: 850; letter-spacing: .12em; text-transform: uppercase; }
+.service-card h3 { margin: 0 0 14px; font-size: clamp(1.8rem, 3vw, 2.6rem); line-height: 1; }
+.pricing-note { margin-top: 22px; padding-bottom: 0; color: var(--muted); font-size: .88rem; line-height: 1.6; text-align: center; }
 .service-card > p:not(.service-number, .tag) { color: var(--muted); }
 .service-card a { margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--white); font-weight: 750; text-decoration: none; }
 .service-card a span { float: right; }
@@ -198,7 +201,7 @@ footer > p { margin: 0; font-size: 1.02rem; }
   .install-cta { grid-column: 1/-1; }
   .service-grid { grid-template-columns: 1fr; }
   .service-card { min-height: 330px; }
-  .service-card h3 { margin-top: 42px; }
+  .service-card h3 { margin-top: 0; }
   .reviews-shell { grid-template-columns: 1fr; align-items: start; }
 }
 @media (max-width: 700px) {
