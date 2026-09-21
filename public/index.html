@@ -27,7 +27,7 @@
     <link rel="manifest" href="/manifest.webmanifest" />
     <link rel="icon" href="/assets/icons/icon-192.png" />
     <link rel="apple-touch-icon" href="/assets/icons/icon-192.png" />
-    <link rel="stylesheet" href="/styles.css?v=12" />
+    <link rel="stylesheet" href="/styles.css?v=13" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -102,7 +102,7 @@
           /><span>101 Detailers</span></a
         >
         <div class="desktop-links">
-          <a href="#services">Services</a><a href="#why-101">Why 101</a
+          <a href="#results">Results</a><a href="#services">Services</a><a href="#why-101">Why 101</a
           ><a href="#service-area">Service area</a><a href="#reviews">Reviews</a
           ><a href="#quote">Quote</a>
         </div>
@@ -150,6 +150,46 @@
         <p>Precision</p>
         <span></span>
         <p>Convenience</p>
+      </section>
+
+      <section class="showcase section" id="results" aria-labelledby="results-title">
+        <div class="showcase-heading">
+          <div>
+            <p class="eyebrow">Recent results</p>
+            <h2 id="results-title">Real vehicles. Finished by 101 Detailers.</h2>
+            <p>Swipe through a selection of recent exterior and interior work.</p>
+          </div>
+          <div class="showcase-controls" aria-label="Photo carousel controls">
+            <button type="button" data-showcase-direction="-1" aria-label="Previous photo">←</button>
+            <button type="button" data-showcase-direction="1" aria-label="Next photo">→</button>
+          </div>
+        </div>
+        <div class="showcase-track" tabindex="0" aria-label="Recent detailing results">
+          <figure class="showcase-card">
+            <img src="/assets/results/camaro-finish.webp" alt="Gray Camaro after a 101 Detailers exterior finish" width="960" height="720" loading="eager" fetchpriority="high" />
+            <figcaption><strong>Polish &amp; wax finish</strong><span>Recent 101 Detailers work</span></figcaption>
+          </figure>
+          <figure class="showcase-card">
+            <img src="/assets/results/cadillac-finish.webp" alt="Black Cadillac after an exterior detail" width="960" height="720" loading="lazy" />
+            <figcaption><strong>Gloss-finished exterior</strong><span>Recent 101 Detailers work</span></figcaption>
+          </figure>
+          <figure class="showcase-card">
+            <img src="/assets/results/interior-detail.webp" alt="Clean Toyota dashboard, console, seats, and carpets after an interior detail" width="960" height="720" loading="lazy" />
+            <figcaption><strong>Interior detail</strong><span>Surfaces, seats, console &amp; carpets</span></figcaption>
+          </figure>
+          <figure class="showcase-card">
+            <img src="/assets/results/truck-finish.webp" alt="White Ford truck with a freshly detailed exterior and wheels" width="960" height="720" loading="lazy" />
+            <figcaption><strong>Truck exterior detail</strong><span>Paint, trim, tires &amp; wheels</span></figcaption>
+          </figure>
+          <figure class="showcase-card">
+            <img src="/assets/results/truck-interior.webp" alt="Clean rear seating and floor area inside a Ford truck" width="960" height="720" loading="lazy" />
+            <figcaption><strong>Truck interior detail</strong><span>Seating, floors &amp; door panels</span></figcaption>
+          </figure>
+          <figure class="showcase-card">
+            <img src="/assets/results/cargo-interior.webp" alt="Clean cargo van interior viewed through the rear doors" width="960" height="720" loading="lazy" />
+            <figcaption><strong>Cargo interior reset</strong><span>Work vehicles welcome</span></figcaption>
+          </figure>
+        </div>
       </section>
 
       <section class="section section-heading" id="services">
@@ -419,7 +459,7 @@
     <script>
       if ("serviceWorker" in navigator)
         window.addEventListener("load", () =>
-          navigator.serviceWorker.register("/service-worker.js?v=16", { updateViaCache: "none" }).then((registration) => registration.update()),
+          navigator.serviceWorker.register("/service-worker.js?v=17", { updateViaCache: "none" }).then((registration) => registration.update()),
         );
       const heroVideo = document.querySelector(".hero video");
       if (
@@ -528,6 +568,20 @@
           submitButton.disabled = false;
           submitButton.textContent = originalLabel;
         }
+      });
+    </script>
+    <script>
+      const showcaseTrack = document.querySelector(".showcase-track");
+      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+      document.querySelectorAll("[data-showcase-direction]").forEach((button) => {
+        button.addEventListener("click", () => {
+          if (!showcaseTrack) return;
+          const direction = Number(button.dataset.showcaseDirection);
+          showcaseTrack.scrollBy({
+            left: direction * Math.min(showcaseTrack.clientWidth * 0.88, 760),
+            behavior: reducedMotion.matches ? "auto" : "smooth",
+          });
+        });
       });
     </script>
   </body>
