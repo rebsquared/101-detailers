@@ -90,7 +90,7 @@ const REVIEW_SECTION = `
   </div>
   <div class="review-actions">
     <a class="outline-button" href="/reviews.html">See more reviews</a>
-    <a class="text-button" href="sms:+15419921237">Text for a quote</a>
+    <a class="text-button" href="sms:+15419921565">Text for a quote</a>
   </div>
 </section>`;
 
@@ -246,7 +246,7 @@ export default {
       console.error("Quote email failed", error);
       recordConversion(request, env, "quote_submit_error", { path: url.pathname });
       return json(
-        { ok: false, error: "We could not send your request. Please call or text 541-992-1237." },
+        { ok: false, error: "We could not send your request. Please call or text 541-992-1565." },
         502,
       );
     }
