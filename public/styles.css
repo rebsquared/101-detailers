@@ -81,7 +81,8 @@ a, button, input, select { -webkit-tap-highlight-color: transparent; }
 .text-button.compact, .call-button.compact { min-height: 42px; padding: 9px 16px; }
 .call-button.compact { border-color: var(--amber-highlight); color: var(--deep); background: var(--amber); box-shadow: 0 0 24px rgba(244, 173, 39, 0.32); }
 .hero { position: relative; min-height: calc(100svh - 110px); overflow: hidden; display: flex; align-items: flex-end; }
-.hero-art { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; background: #07121e; }
+.hero-art { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; background: #07121e; transform: scale(1.025); animation: hero-cinematic-zoom 18s ease-in-out infinite alternate; transform-origin: center; will-change: transform; }
+@keyframes hero-cinematic-zoom { from { transform: scale(1.025); } to { transform: scale(1.105); } }
 .hero-shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(3,8,13,.98) 0%, rgba(3,8,13,.88) 32%, rgba(3,8,13,.18) 68%, rgba(3,8,13,.38) 100%), linear-gradient(0deg, var(--ink) 0%, transparent 28%); }
 .hero-content { position: relative; z-index: 2; width: min(1240px, 100%); margin: 0 auto; padding: clamp(110px, 18vh, 210px) 24px 10vh; }
 .eyebrow { margin: 0 0 12px; color: #bdd1e2; font-size: .76rem; font-weight: 850; letter-spacing: .18em; text-transform: uppercase; }
@@ -284,6 +285,6 @@ footer > p { margin: 0; font-size: 1.02rem; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .hero { background: url("/assets/101-detailers-hero-poster.jpg") center/cover no-repeat; }
-  .hero video { display: none; }
+  .hero { background: url("/assets/101-detailers-hero.jpeg") center/cover no-repeat; }
+  .hero-art { animation: none; transform: none; will-change: auto; }
 }
