@@ -18,16 +18,16 @@
     <meta property="og:title" content="Oregon Coast Mobile Detailing | 101 Detailers" />
     <meta property="og:description" content="Professional mobile auto detailing from Waldport to Astoria, Oregon, brought directly to your location." />
     <meta property="og:url" content="https://101detailers.com/" />
-    <meta property="og:image" content="https://101detailers.com/assets/101-detailers-hero-poster.jpg" />
+    <meta property="og:image" content="https://101detailers.com/assets/101-detailers-hero.jpeg" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Oregon Coast Mobile Detailing | 101 Detailers" />
     <meta name="twitter:description" content="Professional mobile auto detailing from Waldport to Astoria, Oregon." />
-    <meta name="twitter:image" content="https://101detailers.com/assets/101-detailers-hero-poster.jpg" />
+    <meta name="twitter:image" content="https://101detailers.com/assets/101-detailers-hero.jpeg" />
     <title>Oregon Coast Mobile Detailing | 101 Detailers</title>
     <link rel="manifest" href="/manifest.webmanifest" />
     <link rel="icon" href="/assets/icons/icon-192.png" />
     <link rel="apple-touch-icon" href="/assets/icons/icon-192.png" />
-    <link rel="stylesheet" href="/styles.css?v=13" />
+    <link rel="stylesheet" href="/styles.css?v=14" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -36,7 +36,7 @@
         "name": "101 Detailers",
         "url": "https://101detailers.com/",
         "logo": "https://101detailers.com/assets/101-detailers-shield-v2.png",
-        "image": "https://101detailers.com/assets/101-detailers-hero-poster.jpg",
+        "image": "https://101detailers.com/assets/101-detailers-hero.jpeg",
         "telephone": "+1-541-992-1565",
         "email": "info@101detailers.com",
         "priceRange": "$$",
@@ -116,18 +116,14 @@
 
     <main>
       <section class="hero" aria-labelledby="hero-title">
-        <video
+        <img
           class="hero-art"
-          autoplay
-          muted
-          loop
-          playsinline
-          preload="metadata"
-          poster="/assets/101-detailers-hero-poster.jpg"
+          src="/assets/101-detailers-hero.jpeg"
+          alt=""
           aria-hidden="true"
-        >
-          <source src="/assets/101-detailers-hero-video.mp4?v=3" type="video/mp4" />
-        </video>
+          fetchpriority="high"
+          decoding="async"
+        />
         <div class="hero-shade"></div>
         <div class="hero-content">
           <p class="eyebrow">Waldport to Astoria, Oregon</p>
@@ -489,14 +485,6 @@
         window.addEventListener("load", () =>
           navigator.serviceWorker.register("/service-worker.js?v=18", { updateViaCache: "none" }).then((registration) => registration.update()),
         );
-      const heroVideo = document.querySelector(".hero video");
-      if (
-        heroVideo &&
-        window.matchMedia("(prefers-reduced-motion: reduce)").matches
-      ) {
-        heroVideo.pause();
-        heroVideo.removeAttribute("autoplay");
-      }
       let installPrompt;
       const installButtons = [
         ...document.querySelectorAll("#install-app, #install-app-secondary"),
