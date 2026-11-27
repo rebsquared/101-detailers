@@ -1,4 +1,4 @@
-const CACHE = "101-detailers-brand-v18";
+const CACHE = "101-detailers-brand-v19";
 const APP_SHELL = [
   "/",
   "/app.html",
@@ -6,7 +6,7 @@ const APP_SHELL = [
   "/styles.css",
   "/reviews.html",
   "/manifest.webmanifest",
-  "/assets/101-detailers-hero-poster.jpg",
+  "/assets/101-detailers-hero.jpeg",
   "/assets/101-detailers-shield-v2.png",
   "/assets/icons/icon-192.png",
   "/assets/icons/icon-512.png",
